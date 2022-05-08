@@ -1,8 +1,12 @@
+server:
+  # 服务器的HTTP端口，默认为8090
+  port: 8090
+
 spring:
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
+    show-sql: false
 
   datasource:
     url: jdbc:mysql://localhost:3306/file-upload?characterEncoding=UTF-8
@@ -10,3 +14,11 @@ spring:
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+  servlet:
+    multipart:
+      max-file-size: 1000MB
+      max-request-size: 1000MB
+
+# 上传文件存储路径
+prop:
+  upload-folder: D:/temp/file
