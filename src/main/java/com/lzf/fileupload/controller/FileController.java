@@ -133,12 +133,13 @@ public class FileController {
 
         if ("200".equals(mergeResult)) {
             fileInfoService.save(fileInfo);
+            chunkService.deleteByIdentifier(fileInfo.getIdentifier());
             return new BaseResponse(200, "合并成功");
         }
 
         if("300".equals(mergeResult)) {
             FileInfo fileInfo1 = fileInfoService.findByIdentifierEquals(fileInfo.getIdentifier());
-            if(!fileInfo.getFilename().equals(fileInfo1.getFilename())){
+            if(!fileInfo.getFilename().equals(fileInfo1.getFilename())||fileInfo1.getDelFlag()==1){
                 fileInfoService.save(fileInfo);
             }
         }

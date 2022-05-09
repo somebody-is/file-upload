@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.Transient;
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Map;
 
@@ -13,5 +15,8 @@ public interface ChunkDao extends JpaRepository<Chunk,Long> {
 
     @Query(value = "select chunk_number from t_chunk_info where identifier=?1",nativeQuery = true)
     public List<Integer> selectChunkNumbersByIdentifier(String identifier);
+
+    @Transactional
+    public int deleteChunksByIdentifierEquals(String identifier);
 
 }

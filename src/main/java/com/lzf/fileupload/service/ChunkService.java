@@ -12,5 +12,6 @@ public interface ChunkService {
 
     public List<Integer>selectChunkNumber(String identifier);
 
+    public int deleteByIdentifier(String identifier);
 
 }

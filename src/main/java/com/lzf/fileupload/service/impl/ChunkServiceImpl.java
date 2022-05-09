@@ -35,4 +35,9 @@ public class ChunkServiceImpl implements ChunkService {
         return chunkDao.selectChunkNumbersByIdentifier(identifier);
     }
 
+    @Override
+    public int deleteByIdentifier(String identifier) {
+        return chunkDao.deleteChunksByIdentifierEquals(identifier);
+    }
+
 }
